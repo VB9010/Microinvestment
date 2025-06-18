@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>💰 MicroInvest Pro - LEGENDARY EDITION</title>
+    
+    <!-- PWA & Advanced Meta -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        input, textarea, select {
+            -webkit-user-select: auto;
+            user-select: auto;
+        }
+
+        :root {
+            --primary: #3b82f6;
+            --secondary: #6366f1;
+            --accent: #8b5cf6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --bg: #0a0a0f;
+            --surface: rgba(255,255,255,0.04);
+            --text: #ffffff;
+            --crypto-orange: #f7931a;
+            --crypto-purple: #8a2be2;
+            --neon-green: #39ff14;
+            --neon-pink: #ff073a;
+            --neon-blue: #00ffff;
+            --neon-purple: #bf00ff;
+            --holographic: linear-gradient(45deg, #ff073a, #ff6b00, #ffd700, #39ff14, #00ffff, #8b00ff, #ff073a);
+            --rainbow: linear-gradient(45deg, #ff0000, #ff8000, #ffff00, #80ff00, #00ff00, #00ff80, #00ffff, #0080ff, #0000ff, #8000ff, #ff00ff, #ff0080);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.3) 0%, transparent 50%),
+                linear-gradient(135deg, var(--bg) 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1e3a8a 100%);
+            min-height: 100vh;
+            color: var(--text);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Advanced CSS Animations */
+        @keyframes holographicShift {
+            0%, 100% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+            25% { background-position: 100% 50%; filter: hue-rotate(90deg); }
+            50% { background-position: 50% 100%; filter: hue-rotate(180deg); }
+            75% { background-position: 50% 0%; filter: hue-rotate(270deg); }
+        }
+
+        @keyframes rainbowShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes neonPulse {
+            0%, 100% { 
+                text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor;
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor;
+                transform: scale(1.02);
+            }
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 16px;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowShift 4s ease infinite;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .header .subtitle {
+            opacity: 0.9;
+            font-size: 0.9rem;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        .legendary-badge {
+            display: inline-block;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbowShift 3s ease infinite;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 25px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-left: 10px;
+            text-shadow: 0 0 10px rgba(0,0,0,0.8);
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+
+        /* Enhanced Cards */
+        .card {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(30px);
+            border-radius: 28px;
+            padding: 24px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 
+                0 12px 35px rgba(31, 38, 135, 0.5),
+                inset 0 1px 0 rgba(255,255,255,0.15);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--holographic);
+            background-size: 400% 400%;
+            animation: holographicShift 6s ease infinite;
+            opacity: 0.8;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 20px 50px rgba(31, 38, 135, 0.7),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+        }
+
+        /* Portfolio Card */
+        .portfolio-card {
+            text-align: center;
+            background: linear-gradient(135deg, 
+                rgba(59,130,246,0.15) 0%, 
+                rgba(99,102,241,0.15) 25%, 
+                rgba(168,85,247,0.15) 50%, 
+                rgba(6,182,212,0.15) 75%,
+                rgba(16,185,129,0.15) 100%);
+        }
+
+        .portfolio-value {
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 20px 0;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowShift 4s ease infinite;
+            letter-spacing: -1px;
+        }
+
+        /* Enhanced Buttons */
+        .btn {
+            width: 100%;
+            padding: 20px 32px;
+            border: none;
+            border-radius: 24px;
+            background: var(--holographic);
+            background-size: 400% 400%;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            position: relative;
+            overflow: hidden;
+            animation: holographicShift 6s ease infinite;
+            border: 2px solid rgba(255,255,255,0.2);
+            box-shadow: 0 8px 30px rgba(59,130,246,0.5);
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(59,130,246,0.7);
+        }
+
+        .btn:active {
+            transform: scale(0.95);
+        }
+
+        .btn-legendary {
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbowShift 4s ease infinite;
+            box-shadow: 0 8px 35px rgba(255,255,255,0.3);
+            text-shadow: 0 0 15px rgba(0,0,0,0.8);
+        }
+
+        .btn-neon {
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue), var(--neon-pink), var(--neon-purple));
+            background-size: 400% 400%;
+            animation: rainbowShift 2s ease infinite;
+            box-shadow: 0 8px 35px rgba(57,255,20,0.6);
+        }
+
+        /* Enhanced Input Fields */
+        .input-field {
+            width: 100%;
+            padding: 20px 24px;
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 24px;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(20px);
+            margin-bottom: 16px;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 0 35px rgba(59,130,246,0.5);
+            transform: scale(1.02);
+        }
+
+        .input-field::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.9);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        /* Enhanced Tabs */
+        .tabs {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            background: rgba(255,255,255,0.06);
+            border-radius: 24px;
+            margin-bottom: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            padding: 6px;
+        }
+
+        .tab-slider {
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: calc(16.66% - 6px);
+            height: calc(100% - 12px);
+            background: var(--holographic);
+            background-size: 400% 400%;
+            animation: holographicShift 8s ease infinite;
+            border-radius: 18px;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+            box-shadow: 0 6px 20px rgba(59,130,246,0.5);
+        }
+
+        .tab {
+            padding: 16px 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.7rem;
+            font-weight: 700;
+            border: none;
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+            border-radius: 16px;
+        }
+
+        .tab.active {
+            color: white;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.8);
+        }
+
+        .tab:active {
+            transform: scale(0.95);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Quick Amount Grid */
+        .quick-amount {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .amount-btn {
+            padding: 16px 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 18px;
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(15px);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .amount-btn:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .amount-btn:active, .amount-btn.active {
+            border-color: var(--primary);
+            transform: scale(0.95);
+            box-shadow: 0 10px 30px rgba(59,130,246,0.5);
+        }
+
+        /* Investment Options Enhanced */
+        .investment-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .investment-option {
+            background: rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+        }
+
+        .investment-option:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .investment-option:active, .investment-option.selected {
+            transform: scale(0.96);
+            box-shadow: 0 15px 40px rgba(59,130,246,0.4);
+            border-color: rgba(59,130,246,0.6);
+        }
+
+        .investment-option .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .investment-option .name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .investment-option .details {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .investment-option .trend {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 0.7rem;
+            padding: 4px 10px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        .trend.up {
+            background: rgba(16,185,129,0.25);
+            color: var(--success);
+            box-shadow: 0 0 15px rgba(16,185,129,0.4);
+        }
+
+        .trend.down {
+            background: rgba(239,68,68,0.25);
+            color: var(--error);
+            box-shadow: 0 0 15px rgba(239,68,68,0.4);
+        }
+
+        /* Notifications Enhanced */
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 16px;
+            right: 16px;
+            background: rgba(0,0,0,0.95);
+            backdrop-filter: blur(30px);
+            color: white;
+            padding: 20px 24px;
+            border-radius: 24px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+            transform: translateY(-120%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            border: 2px solid rgba(255,255,255,0.15);
+        }
+
+        .notification.show {
+            transform: translateY(0);
+        }
+
+        .notification::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            border-radius: 24px 24px 0 0;
+        }
+
+        .notification.success::before {
+            background: linear-gradient(90deg, var(--success), #06b6d4);
+        }
+
+        .notification.error::before {
+            background: linear-gradient(90deg, var(--error), #dc2626);
+        }
+
+        .notification.info::before {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .notification.legendary::before {
+            background: var(--holographic);
+            background-size: 400% 400%;
+            animation: holographicShift 3s ease infinite;
+        }
+
+        .exclusive-feature {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exclusive-feature::before {
+            content: '⭐ LEGENDARY';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbowShift 4s ease infinite;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            z-index: 10;
+            text-shadow: 0 0 10px rgba(0,0,0,0.8);
+        }
+
+        .legendary-indicator {
+            background: var(--rainbow);
+            background-size: 400% 400%;
+            animation: rainbowShift 3s ease infinite;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.65rem;
+            font-weight: 800;
+            margin-left: 8px;
+            text-shadow: 0 0 10px rgba(0,0,0,0.8);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 480px) {
+            .container { padding: 12px; }
+            .portfolio-value { font-size: 2.5rem; }
+            .header h1 { font-size: 2rem; }
+            .investment-options { grid-template-columns: 1fr; }
+            .quick-amount { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+            .amount-btn { padding: 18px 12px; font-size: 0.9rem; }
+            .tabs { grid-template-columns: repeat(3, 1fr); }
+            .tab-slider { width: calc(33.33% - 6px); }
+        }
+
+        @media (max-width: 360px) {
+            .tabs { grid-template-columns: repeat(2, 1fr); }
+            .tab-slider { width: calc(50% - 6px); }
+            .tab { font-size: 0.65rem; padding: 14px 4px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Enhanced Header -->
+        <div class="header">
+            <h1>💰 MicroInvest Pro</h1>
+            <span class="legendary-badge">LEGENDARY EDITION</span>
+            <div class="subtitle">Ultimate Trading Platform • AI-Powered • Cosmic Experience<br>Advanced Analytics • Social Trading • Legendary Features</div>
+        </div>
+
+        <!-- Account Balance Enhanced -->
+        <div class="card exclusive-feature" style="background: linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(6,182,212,0.2) 50%, rgba(59,130,246,0.2) 100%);">
+            <h3>💳 Premium Balance <span class="legendary-indicator">LEGENDARY</span></h3>
+            <div style="font-size: 2.5rem; font-weight: 900; color: var(--success); margin: 16px 0; text-shadow: 0 0 25px rgba(16,185,129,0.7);" id="availableBalance">500,000 Ft</div>
+            <div style="font-size: 1rem; opacity: 0.9; margin-bottom: 20px;">Zero fees • Instant execution • Premium features unlocked</div>
+        </div>
+
+        <!-- Enhanced Portfolio Card -->
+        <div class="card portfolio-card exclusive-feature">
+            <h3>📊 Portfolio Value</h3>
+            <div class="portfolio-value" id="portfolioValue">0 Ft</div>
+            <div style="font-size: 1.1rem; margin-bottom: 20px;">
+                <span id="portfolioGain" style="color: var(--success);">+0 Ft (0%)</span>
+            </div>
+            
+            <div style="font-size: 0.9rem; opacity: 0.8;" id="portfolioSummary">
+                Ready to build your legendary portfolio
+            </div>
+        </div>
+
+        <!-- Enhanced Navigation Tabs -->
+        <div class="tabs">
+            <div class="tab-slider" id="tabSlider"></div>
+            <button class="tab active" onclick="showTab('invest', 0)">💰<br>Invest</button>
+            <button class="tab" onclick="showTab('portfolio', 1)">📊<br>Portfolio</button>
+            <button class="tab" onclick="showTab('social', 2)">👥<br>Social</button>
+            <button class="tab" onclick="showTab('analytics', 3)">📈<br>Analytics</button>
+            <button class="tab" onclick="showTab('ai', 4)">🧠<br>AI Hub</button>
+            <button class="tab" onclick="showTab('news', 5)">📰<br>News</button>
+        </div>
+
+        <!-- Enhanced Invest Tab -->
+        <div id="invest" class="tab-content active">
+            <!-- Add Money Section Enhanced -->
+            <div class="card exclusive-feature">
+                <h3>💳 Instant Funding <span class="legendary-indicator">LEGENDARY</span></h3>
+                
+                <div style="margin: 20px 0;">
+                    <label class="input-label">💰 Amount (HUF)</label>
+                    <input type="number" 
+                           class="input-field" 
+                           id="depositAmount" 
+                           placeholder="Enter amount for instant transfer..." 
+                           inputmode="numeric"
+                           pattern="[0-9]*">
+                </div>
+
+                <div class="quick-amount">
+                    <button class="amount-btn" onclick="setDepositAmount(25000)">25K</button>
+                    <button class="amount-btn" onclick="setDepositAmount(100000)">100K</button>
+                    <button class="amount-btn" onclick="setDepositAmount(500000)">500K</button>
+                    <button class="amount-btn" onclick="setDepositAmount(1000000)">1M</button>
+                </div>
+
+                <button class="btn btn-legendary" onclick="addMoney()">💳 Instant Transfer (0% Fee)</button>
+            </div>
+
+            <!-- Enhanced Investment Options -->
+            <div class="card exclusive-feature">
+                <h3>🎯 Legendary Investment Arsenal</h3>
+                
+                <div class="investment-options">
+                    <div class="investment-option selected" onclick="selectInvestment('bitcoin')" data-type="bitcoin">
+                        <div class="trend up">↗ +2.1%</div>
+                        <div class="icon">₿</div>
+                        <div class="name">Bitcoin</div>
+                        <div class="details">Digital Gold<br>$67,000<br>24h Vol: $45B</div>
+                    </div>
+                    
+                    <div class="investment-option" onclick="selectInvestment('sp500')" data-type="sp500">
+                        <div class="trend up">↗ +0.8%</div>
+                        <div class="icon">📈</div>
+                        <div class="name">S&P 500</div>
+                        <div class="details">US Stocks<br>4,180<br>Market Cap: $45T</div>
+                    </div>
+                    
+                    <div class="investment-option" onclick="selectInvestment('bonds')" data-type="bonds">
+                        <div class="trend up">↗ +0.1%</div>
+                        <div class="icon">🏦</div>
+                        <div class="name">Treasury</div>
+                        <div class="details">Safe Haven<br>5.2% APY<br>AAA Rated</div>
+                    </div>
+                    
+                    <div class="investment-option" onclick="selectInvestment('gold')" data-type="gold">
+                        <div class="trend down">↘ -0.3%</div>
+                        <div class="icon">🥇</div>
+                        <div class="name">Gold</div>
+                        <div class="details">Precious Metal<br>$1,950/oz<br>Inflation Hedge</div>
+                    </div>
+                </div>
+
+                <div style="margin: 20px 0;">
+                    <label class="input-label">💰 Investment Amount</label>
+                    <input type="number" 
+                           class="input-field" 
+                           id="investAmount" 
+                           placeholder="Enter amount to invest..."
+                           inputmode="numeric"
+                           pattern="[0-9]*">
+                </div>
+
+                <div class="quick-amount">
+                    <button class="amount-btn" onclick="setInvestAmount(10000)">10K</button>
+                    <button class="amount-btn" onclick="setInvestAmount(50000)">50K</button>
+                    <button class="amount-btn" onclick="setInvestAmount(250000)">250K</button>
+                    <button class="amount-btn" onclick="setInvestAmount('max')">MAX</button>
+                </div>
+
+                <button class="btn btn-neon" onclick="buyInvestment()" id="buyBtn">🚀 Execute Trade (AI Optimized)</button>
+            </div>
+        </div>
+
+        <!-- Portfolio Tab -->
+        <div id="portfolio" class="tab-content">
+            <div class="card exclusive-feature">
+                <h3>📊 Your Investment Portfolio</h3>
+                <div id="portfolioList">
+                    <div style="text-align: center; padding: 40px 20px; opacity: 0.7;">
+                        <div style="font-size: 3rem; margin-bottom: 16px;">📈</div>
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">Ready for Legendary Trading</div>
+                        <div style="font-size: 0.9rem; line-height: 1.4;">Build your diversified portfolio with our advanced tools and AI guidance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other tabs content -->
+        <div id="social" class="tab-content">
+            <div class="card">
+                <h3>👥 Social Trading Hub</h3>
+                <div style="text-align: center; padding: 40px 20px; opacity: 0.7;">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">🌐</div>
+                    <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">Social Trading Coming Soon</div>
+                    <div style="font-size: 0.9rem; line-height: 1.4;">Connect with legendary traders worldwide</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="analytics" class="tab-content">
+            <div class="card">
+                <h3>📈 Advanced Analytics</h3>
+                <div style="text-align: center; padding: 40px 20px; opacity: 0.7;">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">📊</div>
+                    <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">Advanced Analytics</div>
+                    <div style="font-size: 0.9rem; line-height: 1.4;">Deep portfolio insights and performance metrics</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ai" class="tab-content">
+            <div class="card">
+                <h3>🧠 AI Trading Hub</h3>
+                <div style="text-align: center; padding: 40px 20px; opacity: 0.7;">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">🤖</div>
+                    <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">AI Trading Intelligence</div>
+                    <div style="font-size: 0.9rem; line-height: 1.4;">Advanced AI-powered trading tools and insights</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="news" class="tab-content">
+            <div class="card">
+                <h3>📰 Market News</h3>
+                <div style="text-align: center; padding: 40px 20px; opacity: 0.7;">
+                    <div style="font-size: 3rem; margin-bottom: 16px;">📰</div>
+                    <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">Market News & Updates</div>
+                    <div style="font-size: 0.9rem; line-height: 1.4;">Real-time market news and analysis</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Notification System -->
+        <div class="notification" id="notification"></div>
+    </div>
+
+    <script>
+        // ==============================================
+        // ÁLLAPOT MENEDZSMENT (STATE MANAGEMENT)
+        // ==============================================
+        let investmentState = {
+            balance: 500000,
+            totalInvested: 0,
+            totalValue: 0,
+            totalGain: 0,
+            investments: [],
+            transactions: [],
+            selectedInvestment: 'bitcoin',
+            userLevel: 1,
+            experiencePoints: 0,
+            investmentStreak: 0
+        };
+
+        // ==============================================
+        // GLOBÁLIS FÜGGVÉNYEK - HTML onclick eseményekhez
+        // ==============================================
+        
+        function setDepositAmount(amount) {
+            console.log('setDepositAmount called with:', amount);
+            const input = document.getElementById('depositAmount');
+            if (input) {
+                input.value = amount;
+            }
+            highlightAmountButton(event.target);
+        }
+        
+        function setInvestAmount(amount) {
+            console.log('setInvestAmount called with:', amount);
+            if (typeof amount === 'string' && amount === 'max') {
+                amount = investmentState.balance;
+            }
+            const input = document.getElementById('investAmount');
+            if (input) {
+                input.value = Math.min(amount, investmentState.balance);
+            }
+            highlightAmountButton(event.target);
+        }
+        
+        function selectInvestment(type) {
+            console.log('selectInvestment called with:', type);
+            investmentState.selectedInvestment = type;
+            
+            document.querySelectorAll('.investment-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            const selectedOption = document.querySelector(`[data-type="${type}"]`);
+            if (selectedOption) {
+                selectedOption.classList.add('selected');
+            }
+            
+            const insights = {
+                bitcoin: "🧠 AI Analysis: Bitcoin showing institutional accumulation patterns. Recommended allocation: 15-25% for aggressive portfolios.",
+                sp500: "🧠 AI Analysis: S&P 500 showing steady institutional flow. Conservative allocation: 30-50%.",
+                bonds: "🧠 AI Analysis: Treasury bonds providing stability. Conservative allocation: 15-30%.",
+                gold: "🧠 AI Analysis: Gold showing oversold conditions. Recommended allocation: 5-15% as portfolio insurance."
+            };
+            
+            showNotification(insights[type] || insights.bitcoin, 'legendary', 4000);
+        }
+        
+        function addMoney() {
+            console.log('addMoney called');
+            const amountInput = document.getElementById('depositAmount');
+            if (!amountInput) return;
+            
+            const amount = parseFloat(amountInput.value);
+            
+            if (!amount || amount <= 0) {
+                showNotification('❌ Please enter a valid amount', 'error');
+                return;
+            }
+            
+            if (amount > 2000000) {
+                showNotification('❌ Maximum single deposit is 2,000,000 Ft for legendary accounts', 'error');
+                return;
+            }
+            
+            investmentState.balance += amount;
+            investmentState.experiencePoints += Math.floor(amount / 200);
+            
+            investmentState.transactions.unshift({
+                id: Date.now(),
+                type: 'deposit',
+                amount: amount,
+                date: new Date(),
+                description: 'Legendary Instant Transfer'
+            });
+            
+            updateUI();
+            
+            showNotification(`✨ Legendary Deposit Complete: ${amount.toLocaleString('hu-HU')} Ft added with cosmic speed!`, 'legendary');
+            
+            amountInput.value = '';
+        }
+
+        function buyInvestment() {
+            console.log('buyInvestment called');
+            const amountInput = document.getElementById('investAmount');
+            if (!amountInput) return;
+            
+            const amount = parseFloat(amountInput.value);
+            const investmentType = investmentState.selectedInvestment;
+            
+            if (!amount || amount <= 0) {
+                showNotification('❌ Please enter a valid investment amount', 'error');
+                return;
+            }
+            
+            if (amount > investmentState.balance) {
+                showNotification('❌ Insufficient balance. Add more funds to continue your legendary journey.', 'error');
+                return;
+            }
+            
+            if (amount < 1000) {
+                showNotification('❌ Minimum legendary investment is 1,000 Ft', 'error');
+                return;
+            }
+            
+            const newInvestment = {
+                id: Date.now(),
+                type: investmentType,
+                amount: amount,
+                buyPrice: getCurrentPrice(investmentType),
+                buyDate: new Date(),
+                currentValue: amount,
+                gain: 0,
+                gainPercent: 0
+            };
+            
+            investmentState.investments.push(newInvestment);
+            investmentState.balance -= amount;
+            investmentState.totalInvested += amount;
+            investmentState.experiencePoints += Math.floor(amount / 100);
+            
+            investmentState.transactions.unshift({
+                id: Date.now(),
+                type: 'buy',
+                investmentType: investmentType,
+                amount: amount,
+                date: new Date(),
+                description: `AI-Optimized Buy: ${investmentType}`
+            });
+            
+            updateUI();
+            
+            showNotification(`🚀 Legendary Trade Executed: ${amount.toLocaleString('hu-HU')} Ft invested in ${investmentType} with AI optimization!`, 'success');
+            
+            amountInput.value = '';
+        }
+
+        function showTab(tabName, index) {
+            console.log('showTab called:', tabName, index);
+            const slider = document.getElementById('tabSlider');
+            if (slider) {
+                slider.style.transform = `translateX(${index * 100}%)`;
+            }
+            
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            const targetTab = document.getElementById(tabName);
+            if (targetTab) {
+                targetTab.classList.add('active');
+            }
+            
+            const tabs = document.querySelectorAll('.tab');
+            if (tabs[index]) {
+                tabs[index].classList.add('active');
+            }
+        }
+
+        // ==============================================
+        // SEGÉD FÜGGVÉNYEK
+        // ==============================================
+        
+        function highlightAmountButton(button) {
+            document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('active'));
+            if (button) {
+                button.classList.add('active');
+            }
+        }
+
+        function getCurrentPrice(type) {
+            const prices = {
+                bitcoin: 67000,
+                sp500: 4180,
+                bonds: 100,
+                gold: 1950
+            };
+            return prices[type] || 100;
+        }
+
+        function updateUI() {
+            updateBalance();
+            updatePortfolio();
+        }
+
+        function updateBalance() {
+            const balanceEl = document.getElementById('availableBalance');
+            if (balanceEl) {
+                balanceEl.textContent = `${investmentState.balance.toLocaleString('hu-HU')} Ft`;
+            }
+        }
+
+        function updatePortfolio() {
+            investmentState.totalValue = investmentState.investments.reduce((total, inv) => total + inv.currentValue, 0);
+            investmentState.totalGain = investmentState.totalValue - investmentState.totalInvested;
+            
+            const portfolioValueEl = document.getElementById('portfolioValue');
+            if (portfolioValueEl) {
+                portfolioValueEl.textContent = `${investmentState.totalValue.toLocaleString('hu-HU')} Ft`;
+            }
+            
+            const gainElement = document.getElementById('portfolioGain');
+            if (gainElement) {
+                const gainText = investmentState.totalGain >= 0 ? '+' : '';
+                const gainPercent = investmentState.totalInvested > 0 ? (investmentState.totalGain / investmentState.totalInvested) * 100 : 0;
+                gainElement.textContent = `${gainText}${investmentState.totalGain.toLocaleString('hu-HU')} Ft (${gainText}${gainPercent.toFixed(1)}%)`;
+                gainElement.style.color = investmentState.totalGain >= 0 ? 'var(--success)' : 'var(--error)';
+            }
+            
+            updatePortfolioList();
+        }
+
+        function updatePortfolioList() {
+            const portfolioList = document.getElementById('portfolioList');
+            if (!portfolioList) return;
+            
+            if (investmentState.investments.length === 0) {
+                portfolioList.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px; opacity: 0.7;">
+                        <div style="font-size: 3rem; margin-bottom: 16px;">📈</div>
+                        <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 8px;">Ready for Legendary Trading</div>
+                        <div style="font-size: 0.9rem; line-height: 1.4;">Build your diversified portfolio with our advanced tools and AI guidance</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            portfolioList.innerHTML = investmentState.investments.map(investment => {
+                const icons = { bitcoin: '₿', sp500: '📈', bonds: '🏦', gold: '🥇' };
+                const names = { bitcoin: 'Bitcoin', sp500: 'S&P 500', bonds: 'Treasury', gold: 'Gold' };
+                
+                return `
+                    <div style="background: rgba(255,255,255,0.08); padding: 16px; border-radius: 16px; margin-bottom: 12px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="font-weight: 700; margin-bottom: 4px;">
+                                    ${icons[investment.type] || '📊'} ${names[investment.type] || investment.type}
+                                </div>
+                                <div style="font-size: 0.8rem; opacity: 0.7;">
+                                    ${investment.buyDate.toLocaleDateString('hu-HU')}
+                                </div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 700;">${investment.currentValue.toLocaleString('hu-HU')} Ft</div>
+                                <div style="font-size: 0.8rem; color: ${investment.gain >= 0 ? 'var(--success)' : 'var(--error)'};">
+                                    ${investment.gain >= 0 ? '+' : ''}${investment.gain.toLocaleString('hu-HU')} Ft
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function showNotification(message, type = 'info', duration = 5000) {
+            const notification = document.getElementById('notification');
+            if (!notification) return;
+            
+            notification.className = `notification ${type}`;
+            notification.innerHTML = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, duration);
+        }
+
+        // ==============================================
+        // ALKALMAZÁS INICIALIZÁLÁSA
+        // ==============================================
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🌌 MicroInvest Pro Legendary Edition - Initializing...');
+            
+            try {
+                updateUI();
+                console.log('✨ MicroInvest Pro Legendary Edition - Successfully loaded!');
+                
+                setTimeout(() => {
+                    showNotification('🌌 MicroInvest Pro Legendary Edition loaded successfully!', 'success');
+                }, 1000);
+                
+            } catch (error) {
+                console.error('Initialization error:', error);
+                setTimeout(() => {
+                    showNotification('⚠️ Some advanced features may be limited. Basic functionality available.', 'error');
+                }, 2000);
+            }
+        });
+
+        // Teljesítmény optimalizálás
+        window.addEventListener('resize', function() {
+            clearTimeout(window.resizeTimer);
+            window.resizeTimer = setTimeout(() => {
+                updateUI();
+            }, 250);
+        });
+
+        console.log('📱 MicroInvest Pro Legendary Edition - Core functions loaded! 🚀');
+    </script>
+</body>
+</html>
